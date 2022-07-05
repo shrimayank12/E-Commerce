@@ -44,7 +44,7 @@
     "name": "HyperX Cloud II",
     "price": 115,
     "currency": "USD",
-    "delivery": false,
+    "delivery": true,
     "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/719KtJ-RAFL._AC_SL1417_.jpg",
     "inStock": true,
     "categoryId": "xasgy42fa"
