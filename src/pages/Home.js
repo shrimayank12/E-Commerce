@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Col, Grid, Row } from 'rsuite';
+import { Col, Container, Row } from 'rsuite';
 import categories from '../database/categories.json';
 
 const Home = () => {
   return (
-    <Grid>
+    <Container>
       <h1>Categories</h1>
       <Row className="show-grid">
         {categories.map(ctg => (
@@ -17,7 +17,7 @@ const Home = () => {
           </Col>
         ))}
       </Row>
-    </Grid>
+    </Container>
   );
 };
 
