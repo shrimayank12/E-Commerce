@@ -12,7 +12,6 @@ function App() {
     <CartProvider>
       <Container>
         <Navs />
-
         <Switch>
           <Route exact path="/">
             <Home />
