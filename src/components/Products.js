@@ -1,5 +1,14 @@
 import React, { useCallback } from 'react';
-import { Alert, Button } from 'rsuite';
+import {
+  Alert,
+  Button,
+  Card,
+  CardBody,
+  CardImg,
+  CardSubtitle,
+  CardText,
+  CardTitle,
+} from 'reactstrap';
 import { useCartDispatch } from '../misc/cart.context';
 
 const Products = ({ products }) => {
@@ -10,8 +19,9 @@ const Products = ({ products }) => {
       if (!inStock) {
         return;
       }
+
       dispatchCart({ type: 'ADD_ONE', id, price });
-      Alert.info('Item Added To Cart', 2000);
+      <Alert color="primary">Item Added to Cart</Alert>;
     },
     [dispatchCart]
   );
@@ -30,22 +40,25 @@ const Products = ({ products }) => {
       thumbnail,
       ...restOfProduct
     }) => (
-      <div key={restOfProduct.id}>
-        <img src={thumbnail} alt={name} width={50} />
-        <div>{name}</div>
-        <div>
-          {currency} {price}
-        </div>
-        <div>{inStock ? 'In Stock' : 'Out of Stock'}</div>
-        {delivery && <div>Delivery Avaliable</div>}
-        <Button
-          appearance="ghost"
-          disabled={!inStock}
-          onClick={() => handleAddToCart(restOfProduct.id, price, inStock)}
-        >
-          Add to Cart
-        </Button>
-      </div>
+      <Card key={restOfProduct.id} className="mb-3">
+        <CardImg top width="100%" src={thumbnail} alt={name} className="h-50" />
+        <CardBody className="font-weight">
+          <CardTitle className="h5">{name}</CardTitle>
+          <CardSubtitle className="h5 mb-2">${price}</CardSubtitle>
+          {delivery && <CardText className="mb-1">Delivery available</CardText>}
+          <CardText className={inStock ? 'text-success' : 'text-danger'}>
+            {inStock ? 'In stock' : 'Out of stock'}
+          </CardText>
+          <Button
+            type="button"
+            color="dark"
+            disabled={!inStock}
+            onClick={() => handleAddToCart(restOfProduct.id, price, inStock)}
+          >
+            Add to cart
+          </Button>
+        </CardBody>
+      </Card>
     )
   );
 };

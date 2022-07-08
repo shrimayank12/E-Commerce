@@ -1,16 +1,19 @@
 import React from 'react';
+import { Input } from 'reactstrap';
 
-const FilterCheckBox = ({ id, name, checked, onChange, label }) => (
-  <div>
-    <input
-      type="checkBox"
-      id={id}
-      name={name}
-      checked={checked}
-      onChange={onChange}
-    />
-    <label htmlFor={id}>{label}</label>
-  </div>
-);
+const FilterCheckbox = ({ id, name, checked, onChange, label }) => {
+  return (
+    <div>
+      <Input
+        type="checkbox"
+        id={id}
+        name={name}
+        checked={checked}
+        onChange={onChange}
+      />
+      {label}
+    </div>
+  );
+};
 
-export default FilterCheckBox;
+export default FilterCheckbox;

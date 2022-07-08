@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useParams } from 'react-router';
+import { CardGroup, Col, Row } from 'reactstrap';
 import givenProducts from '../database/products.json';
 import categories from '../database/categories.json';
 import Products from '../components/Products';
@@ -51,36 +52,43 @@ const Category = ({ category }) => {
   );
 
   return (
-    <div>
-      <div>
-        <h3>Filters</h3>
-        <FilterCheckBox
-          id="delivery"
-          name="delivery"
-          checked={filter.delivery}
-          onChange={onCheckboxChange}
-          label="Delivery"
-        />
-        <FilterCheckBox
-          id="inStock"
-          name="inStock"
-          checked={filter.inStock}
-          onChange={onCheckboxChange}
-          label="inStock"
-        />
-        <FilterCheckBox
-          id="expensive"
-          name="expensive"
-          checked={filter.expensive}
-          onChange={onCheckboxChange}
-          label="Expensive (over 100$)"
-        />
-      </div>
-      <h3>{category.name}</h3>
-      <div>
-        <Products products={filteredProducts} />
-      </div>
-    </div>
+    <Row>
+      <Col xs={12} md={3} className="position-relative">
+        <div className="fixed-md">
+          <h2 className="h3">Filters</h2>
+          <FilterCheckBox
+            id="delivery"
+            name="delivery"
+            checked={filter.delivery}
+            onChange={onCheckboxChange}
+            label="Delivery"
+          />
+          <FilterCheckBox
+            id="inStock"
+            name="inStock"
+            checked={filter.inStock}
+            onChange={onCheckboxChange}
+            label="In stock only"
+          />
+          <FilterCheckBox
+            id="expensive"
+            name="expensive"
+            checked={filter.expensive}
+            onChange={onCheckboxChange}
+            label="Expensive (100+ USD)"
+          />
+          <div className="mt-">
+            Showing {filteredProducts.length} out of {products.length}
+          </div>
+        </div>
+      </Col>
+      <Col xs={12} md={9}>
+        <h1 className="h3">{category.name}</h1>
+        <CardGroup>
+          <Products products={filteredProducts} />
+        </CardGroup>
+      </Col>
+    </Row>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Container } from 'rsuite';
+import { Container } from 'reactstrap';
 import Navs from './components/Navs';
 import { CartProvider } from './misc/cart.context';
 import Category from './pages/Category';

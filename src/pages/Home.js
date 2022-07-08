@@ -1,19 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Col, Container, Row } from 'rsuite';
+import { Col, Container, Row } from 'reactstrap';
 import categories from '../database/categories.json';
 
 const Home = () => {
   return (
     <Container>
-      <h1>Categories</h1>
-      <Row className="show-grid">
-        {categories.map(ctg => (
-          <Col key={ctg.id} sm={24} md={8}>
-            <Link to={`/category/${ctg.id}`}>
-              {' '}
-              <h2>{ctg.name}</h2>{' '}
-            </Link>
+      <Row>
+        {categories.map(c => (
+          <Col
+            xs={12}
+            md={4}
+            tag={Link}
+            key={c.id}
+            to={`/category/${c.id}`}
+            className="text-dark mb-4 bg-white py-5 shadow-sm flex-fill text-center"
+          >
+            <h2 className="h3">{c.name}</h2>
+            <div>{c.description}</div>
           </Col>
         ))}
       </Row>
